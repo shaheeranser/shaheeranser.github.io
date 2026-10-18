@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, type ComponentType, type SVGProps } from "react";
+import Link from "next/link";
 import {
+  ArrowRight,
   ArrowUpRight,
   Cpu,
   Database,
@@ -39,8 +41,9 @@ const TABS: Array<{ id: TabKey; label: string; note: string }> = [
 
 function WorkRow({ item }: { item: WorkItem }) {
   const Icon = rowIcon[item.name] ?? GitPullRequest;
-  return (
-    <a className="os-item" href={item.href} target="_blank" rel="noreferrer">
+  const Arrow = item.internal ? ArrowRight : ArrowUpRight;
+  const content = (
+    <>
       <span className="os-icon" aria-hidden="true">
         <Icon />
       </span>
@@ -50,8 +53,22 @@ function WorkRow({ item }: { item: WorkItem }) {
       </span>
       <span className="os-right">
         <span className={`os-tag ${item.tone}`}>{item.tag}</span>
-        <ArrowUpRight />
+        <Arrow />
       </span>
+    </>
+  );
+
+  if (item.internal) {
+    return (
+      <Link className="os-item" href={item.href}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a className="os-item" href={item.href} target="_blank" rel="noreferrer">
+      {content}
     </a>
   );
 }

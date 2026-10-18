@@ -77,6 +77,8 @@ export type WorkItem = {
   tone: "merged" | "open" | "live" | "";
   sub: string;
   href: string;
+  /** Internal route (case study) rather than an external link. */
+  internal?: boolean;
 };
 
 export const projects: WorkItem[] = [
@@ -105,8 +107,9 @@ export const projects: WorkItem[] = [
     name: "watcher",
     tag: "daemon",
     tone: "",
-    sub: "github.com/shaheeranser/watcher · tails logs and explains crashes with a local LLM",
-    href: "https://github.com/shaheeranser/watcher",
+    sub: "case study · tails logs and explains crashes with a local LLM",
+    href: "/projects/watcher",
+    internal: true,
   },
 ];
 
@@ -122,8 +125,9 @@ export const opensource: WorkItem[] = [
     name: "hijri-api",
     tag: "data",
     tone: "",
-    sub: "shaheeranser/hijri-api · verified, auditable Hijri calendar data as static JSON",
-    href: "https://github.com/shaheeranser/hijri-api",
+    sub: "case study · verified, auditable Hijri calendar data as static JSON",
+    href: "/projects/hijri-api",
+    internal: true,
   },
   {
     name: "Rotation-aware table-cell hit-testing for slides",

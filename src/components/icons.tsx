@@ -113,11 +113,29 @@ export function Moon(p: IconProps) {
   );
 }
 
+export function ArrowLeft(p: IconProps) {
+  return (
+    <svg className="icon" viewBox="0 0 24 24" {...stroke} {...p}>
+      <path d="M19 12H5" />
+      <path d="m11 6-6 6 6 6" />
+    </svg>
+  );
+}
+
 export function ArrowUpRight(p: IconProps) {
   return (
     <svg className="icon" viewBox="0 0 24 24" {...stroke} {...p}>
       <path d="M7 17 17 7" />
       <path d="M8 7h9v9" />
+    </svg>
+  );
+}
+
+export function ArrowRight(p: IconProps) {
+  return (
+    <svg className="icon" viewBox="0 0 24 24" {...stroke} {...p}>
+      <path d="M5 12h14" />
+      <path d="m13 6 6 6-6 6" />
     </svg>
   );
 }
