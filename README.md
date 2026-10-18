@@ -30,11 +30,12 @@ theme persists via `localStorage`.
 
 ## Deployment
 
-Statically exported and published to GitHub Pages from the `portfolio` repository by
-`.github/workflows/deploy.yml` on every push to `main`. The workflow builds with
-`NEXT_PUBLIC_BASE_PATH=/portfolio`, which sets the Next.js `basePath` so the site resolves under
-`https://shaheeranser.github.io/portfolio/`. Without that env var (as in local dev) the site is
-served from the root. `metadataBase` points at the same Pages URL.
+Statically exported and published to GitHub Pages from this repository by
+`.github/workflows/deploy.yml` on every push to `main`, served from the site root at
+`https://shaheeranser.github.io/`. `metadataBase` points at the same URL.
+
+`next.config.ts` still honours an optional `NEXT_PUBLIC_BASE_PATH` (default empty) so the site can
+be served from a subpath if ever needed; the deploy workflow no longer sets it.
 
 ## Getting started
 
@@ -55,7 +56,7 @@ The static export is written to `out/` (there is no `next start` — this projec
 server-less). To preview the Pages build locally:
 
 ```bash
-NEXT_PUBLIC_BASE_PATH=/portfolio npm run build
+npm run build
 npx serve out
 ```
 

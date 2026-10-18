@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "Muhammad Shaheer · Full-Stack & Cloud/DevOps Engineer",
   description:
     "Muhammad Shaheer — full-stack software engineer building production web apps and the cloud & DevOps infrastructure that keeps them running.",
-  metadataBase: new URL("https://shaheeranser.github.io/portfolio/"),
+  metadataBase: new URL("https://shaheeranser.github.io/"),
   openGraph: {
     title: "Muhammad Shaheer · Full-Stack & Cloud/DevOps Engineer",
     description: "Production web apps, and the infrastructure that keeps them running.",
