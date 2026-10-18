@@ -34,7 +34,7 @@
   --muted: #5b6673;
   --line: #dde3ea;
   --line-strong: #c6cfd9;
-  --green: #178a58;
+  --green: #157a4d;
   --green-ink: #ffffff;
   --blue: #2b5fd9;
   --amber: #a9691a;
@@ -70,7 +70,6 @@ body {
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   overflow-x: clip;
   transition: background-color 250ms ease, color 250ms ease;
 }
@@ -1017,8 +1016,7 @@ img {
     top: 0;
     z-index: 40;
     padding: 12px clamp(18px, 4vw, 28px);
-    background: color-mix(in srgb, var(--bg) 84%, transparent);
-    backdrop-filter: blur(14px);
+    background: var(--bg);
     border-bottom: 1px solid var(--line);
   }
   .topbar .brand {

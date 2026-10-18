@@ -101,7 +101,7 @@ export function CaseStudyBody({ sections }: { sections: ProjectSection[] }) {
                       {section.badge}
                     </p>
                   ) : null}
-                  <h3 className="cs-callout-title">{section.title}</h3>
+                  <h2 className="cs-callout-title">{section.title}</h2>
                   <dl className="cs-callout-rows">
                     {section.rows.map((row) => (
                       <div key={row.label}>
