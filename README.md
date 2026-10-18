@@ -30,12 +30,13 @@ theme persists via `localStorage`.
 
 ## Deployment
 
-Statically exported and published to GitHub Pages from this repository by
-`.github/workflows/deploy.yml` on every push to `main`, served from the site root at
-`https://shaheeranser.github.io/`. `metadataBase` points at the same URL.
+Statically exported and published to GitHub Pages from this repository by GitHub's standard
+Next.js Pages workflow (`.github/workflows/nextjs.yml`) on every push to `main`, served from the
+site root at `https://shaheeranser.github.io/`. `metadataBase` points at the same URL.
 
-`next.config.ts` still honours an optional `NEXT_PUBLIC_BASE_PATH` (default empty) so the site can
-be served from a subpath if ever needed; the deploy workflow no longer sets it.
+`next.config.ts` uses an empty base path (the repo is the `shaheeranser.github.io` user site);
+`nextjs.yml` is GitHub's stock Next.js workflow, which injects the Pages base path automatically
+for project sites and leaves it empty here.
 
 ## Getting started
 
