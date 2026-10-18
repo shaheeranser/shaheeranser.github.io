@@ -100,8 +100,9 @@ export const projects: WorkItem[] = [
     name: "Exam Proctoring Platform",
     tag: "app",
     tone: "",
-    sub: "github.com/shaheeranser/exam-proctor · LTI 1.3 proctoring that runs inside Moodle",
-    href: "https://github.com/shaheeranser/exam-proctor",
+    sub: "case study · LTI 1.3 proctoring that runs in the browser, nothing to install",
+    href: "/projects/exam-proctor",
+    internal: true,
   },
   {
     name: "watcher",
