@@ -1,108 +1,76 @@
 "use client";
 
-import { useState, type ComponentType, type SVGProps } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Cpu,
-  Database,
-  FileText,
-  GitPullRequest,
-  Grid,
-  Package,
-  Terminal,
-} from "@/components/icons";
+import { ArrowRight, ArrowUpRight } from "@/components/icons";
 import { opensource, projects, type WorkItem } from "@/lib/content";
 
-const rowIcon: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
-  Lookvisa: Grid,
-  "Invoicing portal": FileText,
-  "Exam Proctoring Platform": Cpu,
-  watcher: Terminal,
-  reamify: Package,
-  "hijri-api": Database,
-};
+const TABS = [
+  { id: "projects", label: "Projects" },
+  { id: "oss", label: "Open source" },
+] as const;
 
-type TabKey = "projects" | "oss";
+type TabKey = (typeof TABS)[number]["id"];
 
-const TABS: Array<{ id: TabKey; label: string; note: string }> = [
-  {
-    id: "projects",
-    label: "Projects",
-    note: "Commercial products and shipped systems I've designed and built end to end.",
-  },
-  {
-    id: "oss",
-    label: "Open source",
-    note: "A library and a dataset I maintain, plus pull requests merged into or open against other projects.",
-  },
-];
-
-function WorkRow({ item }: { item: WorkItem }) {
-  const Icon = rowIcon[item.name] ?? GitPullRequest;
-  const Arrow = item.internal ? ArrowRight : ArrowUpRight;
-  const content = (
+function Row({ item }: { item: WorkItem }) {
+  const body = (
     <>
-      <span className="os-icon" aria-hidden="true">
-        <Icon />
+      <span>
+        <span className="row-name">{item.name}</span>
+        <span className="row-desc">{item.sub}</span>
       </span>
-      <span className="os-text">
-        <span className="os-name">{item.name}</span>
-        <span className="os-sub">{item.sub}</span>
-      </span>
-      <span className="os-right">
-        <span className={`os-tag ${item.tone}`}>{item.tag}</span>
-        <Arrow />
+      <span className="row-right">
+        <span className={`tag ${item.tone}`}>{item.tag}</span>
+        <span className="go">{item.internal ? <ArrowRight /> : <ArrowUpRight />}</span>
       </span>
     </>
   );
 
   if (item.internal) {
     return (
-      <Link className="os-item" href={item.href}>
-        {content}
+      <Link className="row" href={item.href}>
+        {body}
       </Link>
     );
   }
 
   return (
-    <a className="os-item" href={item.href} target="_blank" rel="noreferrer">
-      {content}
+    <a className="row" href={item.href} target="_blank" rel="noreferrer">
+      {body}
     </a>
   );
 }
 
 export function Work() {
   const [tab, setTab] = useState<TabKey>("projects");
-  const active = TABS.find((t) => t.id === tab)!;
   const items = tab === "projects" ? projects : opensource;
 
   return (
-    <section className="work-view" id="work">
-      <h2 className="view-title">Work</h2>
+    <section className="sect" id="work">
+      <div className="sect-bar">
+        <h2>Work</h2>
+        <Link className="more" href="/projects">
+          case studies →
+        </Link>
+      </div>
 
       <div className="tabs" role="tablist" aria-label="Work categories">
-        {TABS.map((t) => (
+        {TABS.map((item) => (
           <button
-            key={t.id}
-            className={`tab ${tab === t.id ? "active" : ""}`}
-            role="tab"
             type="button"
-            aria-selected={tab === t.id}
-            onClick={() => setTab(t.id)}
+            role="tab"
+            key={item.id}
+            aria-selected={tab === item.id}
+            onClick={() => setTab(item.id)}
           >
-            {t.label}
-            <span className="count">{t.id === "projects" ? projects.length : opensource.length}</span>
+            {item.label}
           </button>
         ))}
       </div>
 
-      <p className="tab-note">{active.note}</p>
-
-      <div className="os-list" role="tabpanel" id={`panel-${tab}`}>
+      <div className="list" role="tabpanel">
         {items.map((item) => (
-          <WorkRow item={item} key={item.name} />
+          <Row item={item} key={item.name} />
         ))}
       </div>
     </section>

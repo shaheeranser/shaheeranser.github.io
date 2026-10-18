@@ -24,7 +24,7 @@ export function ThemeToggle() {
 
   return (
     <button
-      className="tray-btn square"
+      className="icobtn"
       type="button"
       onClick={toggle}
       aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}

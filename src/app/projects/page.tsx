@@ -3,9 +3,10 @@ import Link from "next/link";
 import { caseStudies } from "@/lib/caseStudies";
 
 export const metadata: Metadata = {
-  title: "Projects · Muhammad Shaheer",
+  title: "Projects",
   description:
-    "Selected projects by Muhammad Shaheer: watcher, a self-hosted log-watching daemon, and hijri-api, verifiable Hijri calendar data as static JSON.",
+    "Case studies by Muhammad Shaheer: watcher, a self-hosted log-watching daemon, and hijri-api, verifiable Hijri calendar data as static JSON.",
+  alternates: { canonical: "/projects/" },
 };
 
 export default function ProjectsIndex() {

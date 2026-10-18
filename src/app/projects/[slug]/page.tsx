@@ -17,8 +17,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = getCaseStudy(slug);
   if (!project) return {};
   return {
-    title: `${project.name} · Muhammad Shaheer`,
+    title: project.name,
     description: project.summary,
+    alternates: { canonical: `/projects/${project.slug}/` },
     openGraph: {
       title: `${project.name} — ${project.tagline}`,
       description: project.summary,
@@ -47,6 +48,7 @@ export default async function ProjectPage({ params }: PageProps) {
             alt={`${project.name} logo`}
             width={432}
             height={272}
+            priority
           />
         ) : null}
         <h1 className="cs-title">{project.name}</h1>

@@ -1,48 +1,53 @@
-import type { ComponentType, SVGProps } from "react";
-import { Briefcase, Cpu } from "@/components/icons";
-import { SectionHead } from "@/components/SectionHead";
-import { roles } from "@/lib/content";
-
-const roleIcon: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
-  Inspirit360: Briefcase,
-  "Alpha Network": Cpu,
-};
+import { certifications, education, roles } from "@/lib/content";
 
 export function Experience() {
   return (
-    <section className="experience-view" id="experience">
-      <SectionHead
-        title="Experience"
-        note="Where I've shipped production software, and what I owned end to end."
-      />
+    <section className="sect" id="experience">
+      <div className="sect-bar">
+        <h2>Experience</h2>
+      </div>
 
-      <div className="exp">
-        {roles.map((role) => {
-          const Icon = roleIcon[role.company] ?? Briefcase;
-          return (
-            <article className="exp-row" key={role.company}>
-              <span className="exp-icon" aria-hidden="true">
-                <Icon />
-              </span>
-              <div>
-                <div className="exp-head">
-                  <span className="exp-company">{role.company}</span>
-                  {role.level === "active" ? <span className="tag ok">{role.location}</span> : null}
-                </div>
-                <p className="exp-title">
-                  {role.title}
-                  {role.level === "log" ? ` — ${role.location}` : ""}
-                </p>
-                <ul className="exp-bullets">
-                  {role.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              </div>
-              <span className="exp-date">{role.date}</span>
-            </article>
-          );
-        })}
+      <div className="jobs">
+        {roles.map((role) => (
+          <article className="job" key={role.company}>
+            <p className="when">{role.date}</p>
+            <div>
+              <h3>{role.title}</h3>
+              <p className="co">
+                {role.company} · {role.location}
+              </p>
+              <ul>
+                {role.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p className="subhead">education</p>
+      <div className="credentials">
+        {education.map((entry) => (
+          <div className="cred" key={entry.degree}>
+            <p className="t">{entry.degree}</p>
+            <p className="s">
+              {entry.school} · {entry.date}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <p className="subhead">certifications</p>
+      <div className="credentials">
+        {certifications.map((cert) => (
+          <div className="cred" key={cert.name}>
+            <p className="t">{cert.name}</p>
+            <p className="s">
+              {cert.issuer} · {cert.date}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
