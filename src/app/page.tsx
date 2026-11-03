@@ -4,12 +4,15 @@ import { Experience } from "@/components/Experience";
 import { Hero } from "@/components/Hero";
 import { SiteShell } from "@/components/SiteShell";
 import { Work } from "@/components/Work";
+import { getRepoStats } from "@/lib/github";
 
-export default function Home() {
+export default async function Home() {
+  const stats = await getRepoStats();
+
   return (
     <SiteShell>
       <Hero />
-      <Work />
+      <Work stats={stats} />
       <Experience />
       <Competencies />
       <Contact />

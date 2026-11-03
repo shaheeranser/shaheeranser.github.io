@@ -64,4 +64,6 @@ npx serve out
 ## Notes
 
 - Site content (profile, roles, projects, contributions, skills) is curated in `src/lib/content.ts`.
-- The page is fully statically prerendered; no runtime data fetch.
+- GitHub star/fork counts are fetched at build time with a last-known fallback, then baked into
+  the static export. The Pages workflow rebuilds daily so they stay current; the page itself still
+  has no runtime data fetch.

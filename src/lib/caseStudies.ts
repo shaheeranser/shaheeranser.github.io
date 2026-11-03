@@ -175,6 +175,11 @@ export const caseStudies: Project[] = [
     links: [
       { label: "GitHub", href: "https://github.com/shaheeranser/watcher", kind: "repo" },
       {
+        label: "Medium",
+        href: "https://medium.com/@shaheer.anser/can-a-small-local-llm-catch-your-apps-crashes-before-you-do-933e5f33e875",
+        kind: "extra",
+      },
+      {
         label: "Test harness",
         href: "https://github.com/shaheeranser/watcher_victim",
         kind: "extra",
@@ -184,7 +189,7 @@ export const caseStudies: Project[] = [
       {
         kind: "prose",
         paragraphs: [
-          "Watcher runs in the background reading your application logs. When something crashes, it works out the root cause and tells you in plain English, using a small model on the machine you already have.",
+          "Watcher runs in the background reading your application logs. When something crashes, it works out the root cause and tells you in plain English, using a small model on the machine you already have. Demoed at the AI Tinkerers Lahore meetup in October 2026.",
         ],
       },
       {
@@ -275,7 +280,7 @@ export const caseStudies: Project[] = [
           "Watcher is pre-1.0 and currently published as a release candidate. It is tested against real services rather than declared finished, so here is the real position rather than a pitch.",
         tone: "built",
         items: [
-          "The engine, its production runtime, and crash deduplication.",
+          "The engine, its runtime, and crash deduplication.",
           "watcher attach — a live dashboard over SQLite incident history and a read API on a unix socket.",
           "watcher eval — scoring explanations against a ground-truth file.",
           "watcher onboard, the TOML config file, the checksum-verified installer, and a systemd unit.",
@@ -387,6 +392,20 @@ export const caseStudies: Project[] = [
         paragraphs: [
           "The JSON is the contract: dates are precomputed, so no astronomy library is needed at runtime and other languages can read the files directly. The site is published as static files on GitHub Pages, so the full history is diffable in git.",
           "Cities: karachi, lahore, peshawar. Profiles: sunni_hanafi, sunni_asr1 (earlier Asr), shia_jafari.",
+        ],
+      },
+      {
+        kind: "list",
+        heading: "Where this stands",
+        intro:
+          "The data is live as static files; the limits are part of the design rather than a temporary state.",
+        tone: "gap",
+        items: [
+          "Built: a static JSON API on GitHub Pages, verified month-start overrides with sources, four confidence levels, and prayer times for three cities and three profiles.",
+          "Calculated, not observed: prayer times come from a location and convention, not from an on-the-ground sighting or announcement.",
+          "Human in the loop: a new month start only lands after a person approves the announcement through a pull request.",
+          "Coverage is deliberately narrow: three cities and three profiles today; anything outside them is fallback data, not a verified entry.",
+          "Hosting is GitHub Pages only — there is no separate uptime guarantee, and consumers read precomputed files rather than calling an astronomy service at runtime.",
         ],
       },
       {

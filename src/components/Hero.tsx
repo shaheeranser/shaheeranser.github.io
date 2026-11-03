@@ -4,15 +4,15 @@ export function Hero() {
   return (
     <section className="hero">
       <p className="mono">full-stack software engineer</p>
-      <h1 className="lead">I build production systems end to end.</h1>
+      <h1 className="lead">I build products end to end.</h1>
       <p className="pos">
-        Schema, API, deployment and the infrastructure that keeps them running — from an empty
-        repository to a live service. I care about the parts nobody sees until they break.
+        From the problem to the deployed service — schema, API, deployment, and the infrastructure
+        that keeps them running. I care about the people using them.
       </p>
       <div className="idline">
         <span>Muhammad Shaheer</span>
         <span>Lahore · UTC+05:00</span>
-        <span className="live">● open — full-time &amp; contract, remote</span>
+        <span className="live">● open — full-time &amp; contract · remote or relocation</span>
       </div>
       <div className="cta">
         <Link className="btn primary" href="#work">

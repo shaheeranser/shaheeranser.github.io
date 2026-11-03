@@ -5,7 +5,7 @@ import { caseStudies } from "@/lib/caseStudies";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Case studies by Muhammad Shaheer: watcher, a self-hosted log-watching daemon, and hijri-api, verifiable Hijri calendar data as static JSON.",
+    "Case studies by Muhammad Shaheer: exam-proctor, watcher, and hijri-api — browser-based exam proctoring, a self-hosted log-watching daemon, and verifiable Hijri calendar data as static JSON. Projects include Inspirit360 invoicing, Lookvisa, and open-source libraries like reamify.",
   alternates: { canonical: "/projects/" },
 };
 
@@ -17,7 +17,7 @@ export default function ProjectsIndex() {
         <h1 className="cs-title">Selected work</h1>
         <p className="cs-lede">
           Systems I have designed, built and shipped. Each one is written up as a case study:
-          the problem, the approach and what actually runs.
+          the problem, the constraints, what actually runs, and what does not yet.
         </p>
       </header>
 

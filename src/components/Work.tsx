@@ -3,7 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "@/components/icons";
-import { opensource, projects, type WorkItem } from "@/lib/content";
+import {
+  opensource,
+  projects,
+  type RepoStats,
+  type WorkItem,
+} from "@/lib/content";
 
 const TABS = [
   { id: "projects", label: "Projects" },
@@ -12,12 +17,22 @@ const TABS = [
 
 type TabKey = (typeof TABS)[number]["id"];
 
-function Row({ item }: { item: WorkItem }) {
+function compactCount(value: number): string {
+  if (value < 1000) return String(value);
+  return `${(value / 1000).toFixed(1).replace(/\.0$/, "")}k`;
+}
+
+function Row({ item, stats }: { item: WorkItem; stats?: RepoStats }) {
   const body = (
     <>
       <span>
         <span className="row-name">{item.name}</span>
         <span className="row-desc">{item.sub}</span>
+        {stats ? (
+          <span className="row-stats">
+            {compactCount(stats.stars)} stars · {compactCount(stats.forks)} forks
+          </span>
+        ) : null}
       </span>
       <span className="row-right">
         <span className={`tag ${item.tone}`}>{item.tag}</span>
@@ -41,7 +56,7 @@ function Row({ item }: { item: WorkItem }) {
   );
 }
 
-export function Work() {
+export function Work({ stats }: { stats: Record<string, RepoStats> }) {
   const [tab, setTab] = useState<TabKey>("projects");
   const items = tab === "projects" ? projects : opensource;
 
@@ -70,7 +85,7 @@ export function Work() {
 
       <div className="list" role="tabpanel">
         {items.map((item) => (
-          <Row item={item} key={item.name} />
+          <Row item={item} key={item.name} stats={item.repo ? stats[item.repo] : undefined} />
         ))}
       </div>
     </section>

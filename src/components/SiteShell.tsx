@@ -47,7 +47,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               <p className="k">status</p>
               <p className="v">
                 <span className="dot" />
-                open — remote
+                open — remote or relocation
               </p>
             </div>
             <div>

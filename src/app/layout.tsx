@@ -28,7 +28,7 @@ const themeInit = `try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='
 const siteUrl = "https://shaheeranser.github.io";
 const title = "Muhammad Shaheer · Full-Stack Engineer";
 const description =
-  "Full-stack software engineer in Lahore. I build production platforms and developer tools end to end — schema, API, deployment, and the infrastructure that keeps them running.";
+  "Full-stack software engineer in Lahore. I build products and developer tools end to end — schema, API, deployment, and the infrastructure that keeps them running.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -13,7 +13,7 @@ export const profile = {
   github: "https://github.com/shaheeranser",
   linkedin: "https://linkedin.com/in/shaheeranser",
   resume: `${basePath}/resume.pdf`,
-  availability: "Available for full-time & contract — remote",
+  availability: "Available for full-time & contract — remote or relocation",
 };
 
 export const navSections = [
@@ -48,14 +48,13 @@ export type Role = {
 export const roles: Role[] = [
   {
     company: "Inspirit360",
-    title: "Software Engineer & Technical Consultant",
+    title: "Software Engineer",
     location: "Finland · Remote",
     date: "Jan 2026 — present",
     level: "active",
     bullets: [
-      "Founding engineer and sole technical owner of a production invoicing portal serving European SME back-office operations.",
-      "Built the platform end to end on Next.js, FastAPI and PostgreSQL — from an empty repository to a live production service.",
-      "Own the data models, API surface and deployment workflow; advise leadership on technical service expansion.",
+      "Founding engineer on an invoicing platform for European SMEs; took it from an empty repository to a deployed service.",
+      "Currently maintain the product and its deployment workflow.",
     ],
   },
   {
@@ -65,11 +64,16 @@ export const roles: Role[] = [
     date: "Aug 2025",
     level: "log",
     bullets: [
-      "Built an AI customer-support chatbot, fine-tuning DistilBERT for intent classification and FlanT5 for response generation behind a Flask API.",
+      "Fine-tuned DistilBERT and FlanT5 to build an AI customer-support chatbot for intent classification and response generation.",
       "Synthetically expanded the training corpus to lift intent coverage against sparse support logs.",
     ],
   },
 ];
+
+export type RepoStats = {
+  stars: number;
+  forks: number;
+};
 
 export type WorkItem = {
   name: string;
@@ -79,6 +83,8 @@ export type WorkItem = {
   href: string;
   /** Internal route (case study) rather than an external link. */
   internal?: boolean;
+  /** Key into the build-time GitHub stats map. */
+  repo?: string;
 };
 
 export const projects: WorkItem[] = [
@@ -86,21 +92,21 @@ export const projects: WorkItem[] = [
     name: "Lookvisa",
     tag: "platform",
     tone: "live",
-    sub: "lookvisa.com · commercial platform connecting investors with investment seekers",
+    sub: "lookvisa.com · backend developer (Nov 2024–Feb 2025): designed core API architecture and data models",
     href: "https://lookvisa.com",
   },
   {
     name: "Invoicing portal",
     tag: "product",
     tone: "live",
-    sub: "invoice.inspirit360.eu · production invoicing portal for European SME back-offices",
+    sub: "invoice.inspirit360.eu · founding engineer for European SMEs: built end to end from empty repo to deployed service",
     href: "https://invoice.inspirit360.eu",
   },
   {
     name: "Exam Proctoring Platform",
     tag: "app",
     tone: "",
-    sub: "case study · LTI 1.3 proctoring that runs in the browser, nothing to install",
+    sub: "case study · for schools running online exams: browser-based proctoring with nothing to install and no video leaving the device",
     href: "/projects/exam-proctor",
     internal: true,
   },
@@ -108,34 +114,45 @@ export const projects: WorkItem[] = [
     name: "watcher",
     tag: "daemon",
     tone: "",
-    sub: "case study · tails logs and explains crashes with a local LLM",
+    sub: "case study · for developers running services: tails logs and explains crashes with a local LLM, no cloud calls (demoed AI Tinkerers Lahore Oct 2026)",
     href: "/projects/watcher",
     internal: true,
+    repo: "watcher",
   },
 ];
 
 export const opensource: WorkItem[] = [
   {
+    name: "CI/CD & Kubernetes Pipeline",
+    tag: "pipeline",
+    tone: "",
+    sub: "shaheeranser/github-actions-demo · builds/pushes to Azure Container Registry and deploys to AKS with per-PR staging",
+    href: "https://github.com/shaheeranser/github-actions-demo",
+  },
+  {
     name: "reamify",
     tag: "library",
     tone: "",
-    sub: "shaheeranser/reamify · MIT · streams PDF tables into XLSX with bounded memory",
+    sub: "shaheeranser/reamify · for large PDF tables: streams them into XLSX with bounded memory",
     href: "https://github.com/shaheeranser/reamify",
+    repo: "reamify",
   },
   {
     name: "hijri-api",
     tag: "data",
     tone: "",
-    sub: "case study · verified, auditable Hijri calendar data as static JSON",
+    sub: "case study · for apps that need trustworthy Hijri dates in Pakistan: verified, auditable month starts as static JSON",
     href: "/projects/hijri-api",
     internal: true,
+    repo: "hijri-api",
   },
   {
     name: "Rotation-aware table-cell hit-testing for slides",
     tag: "merged",
     tone: "merged",
-    sub: "genspark-ai/genoffice · 7.6k★ · pull request #171",
+    sub: "genspark-ai/genoffice · pull request #171",
     href: "https://github.com/genspark-ai/genoffice/pull/171",
+    repo: "genoffice",
   },
   {
     name: "perf(tables): cut chart detection off quadratic paths",
@@ -158,8 +175,10 @@ export const skills: Array<{ label: string; items: Skill[] }> = [
     label: "Languages",
     items: [
       { label: "TypeScript", color: "3178C6", logo: "typescript", logoColor: "white" },
+      { label: "JavaScript", color: "F7DF1E", logo: "javascript", logoColor: "000000" },
       { label: "Python", color: "3776AB", logo: "python", logoColor: "white" },
       { label: "Go", color: "00ADD8", logo: "go", logoColor: "white" },
+      { label: "SQL", color: "4479A1", logo: "postgresql", logoColor: "white" },
     ],
   },
   {
@@ -167,6 +186,7 @@ export const skills: Array<{ label: string; items: Skill[] }> = [
     items: [
       { label: "React", color: "61DAFB", logo: "react", logoColor: "20232A" },
       { label: "Next.js", color: "000000", logo: "nextdotjs", logoColor: "white" },
+      { label: "Vite", color: "646CFF", logo: "vite", logoColor: "white" },
     ],
   },
   {
@@ -182,6 +202,7 @@ export const skills: Array<{ label: string; items: Skill[] }> = [
     items: [
       { label: "PostgreSQL", color: "4169E1", logo: "postgresql", logoColor: "white" },
       { label: "MongoDB", color: "47A248", logo: "mongodb", logoColor: "white" },
+      { label: "MySQL", color: "4479A1", logo: "mysql", logoColor: "white" },
     ],
   },
   {
@@ -192,6 +213,20 @@ export const skills: Array<{ label: string; items: Skill[] }> = [
       { label: "Docker", color: "2496ED", logo: "docker", logoColor: "white" },
       { label: "Kubernetes", color: "326CE5", logo: "kubernetes", logoColor: "white" },
       { label: "GitHub Actions", color: "2088FF", logo: "githubactions", logoColor: "white" },
+      { label: "Caddy", color: "1F88C0", logo: "caddy", logoColor: "white" },
+      { label: "MinIO", color: "C72E49", logo: "minio", logoColor: "white" },
+      { label: "Git", color: "F05032", logo: "git", logoColor: "white" },
+    ],
+  },
+  {
+    label: "Data & ML",
+    items: [
+      { label: "TensorFlow", color: "FF6F00", logo: "tensorflow", logoColor: "white" },
+      { label: "TensorFlow.js", color: "FF6F00", logo: "tensorflow", logoColor: "white" },
+      { label: "NumPy", color: "013243", logo: "numpy", logoColor: "white" },
+      { label: "Pandas", color: "150458", logo: "pandas", logoColor: "white" },
+      { label: "Scikit-learn", color: "F7931E", logo: "scikitlearn", logoColor: "white" },
+      { label: "Ollama", color: "000000", logo: "ollama", logoColor: "white" },
     ],
   },
 ];

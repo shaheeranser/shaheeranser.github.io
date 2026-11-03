@@ -452,6 +452,13 @@ img {
   max-width: 70ch;
   margin-top: 3px;
 }
+.row-stats {
+  display: block;
+  margin-top: 7px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
 .row-right {
   display: flex;
   align-items: center;
