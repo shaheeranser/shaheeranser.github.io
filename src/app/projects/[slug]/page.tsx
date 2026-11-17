@@ -24,6 +24,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${project.name} — ${project.tagline}`,
       description: project.summary,
       type: "article",
+      url: `/projects/${project.slug}/`,
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          alt: `${project.name} — ${project.tagline}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} — ${project.tagline}`,
+      description: project.summary,
+      images: ["/og.png"],
     },
   };
 }

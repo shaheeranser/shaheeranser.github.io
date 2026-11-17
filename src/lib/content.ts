@@ -3,38 +3,29 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export const profile = {
   name: "Muhammad Shaheer",
   handle: "shaheeranser",
-  host: "shaheeranser@localhost",
+  host: "shaheeranser.me",
+  site: "https://shaheeranser.me",
   role: "Full-Stack Software Engineer",
+  focus: "Cloud & DevOps, Systems",
   location: "Lahore, Pakistan",
   timezone: "UTC+05:00",
-  email: "shaheer.anser@gmail.com",
+  email: "hello@shaheeranser.me",
   phone: "+92 328 5440010",
   phoneHref: "+923285440010",
   github: "https://github.com/shaheeranser",
   linkedin: "https://linkedin.com/in/shaheeranser",
+  medium: "https://medium.com/@shaheer.anser",
   resume: `${basePath}/resume.pdf`,
   availability: "Available for full-time & contract — remote or relocation",
-};
+  availabilityShort: "Open to full-time & contract",
+} as const;
 
 export const navSections = [
-  { id: "experience", label: "Experience" },
   { id: "work", label: "Work" },
-  { id: "competencies", label: "Competencies" },
-  { id: "connect", label: "Contact" },
+  { id: "experience", label: "Experience" },
+  { id: "stack", label: "Stack" },
+  { id: "contact", label: "Contact" },
 ] as const;
-
-export type TerminalInfoRow = {
-  k: string;
-  v: string;
-};
-
-export const terminalInfo: TerminalInfoRow[] = [
-  { k: "role", v: profile.role },
-  { k: "focus", v: "Cloud & DevOps, Systems" },
-  { k: "location", v: profile.location },
-  { k: "timezone", v: profile.timezone },
-  { k: "status", v: "Open to full-time & contract" },
-];
 
 export type Role = {
   company: string;
@@ -43,6 +34,7 @@ export type Role = {
   date: string;
   level: "active" | "log";
   bullets: string[];
+  stack: string[];
 };
 
 export const roles: Role[] = [
@@ -56,6 +48,7 @@ export const roles: Role[] = [
       "Founding engineer on an invoicing platform for European SMEs; took it from an empty repository to a deployed service.",
       "Currently maintain the product and its deployment workflow.",
     ],
+    stack: ["Next.js", "FastAPI", "PostgreSQL", "Docker", "GitHub Actions"],
   },
   {
     company: "Alpha Network",
@@ -67,6 +60,7 @@ export const roles: Role[] = [
       "Fine-tuned DistilBERT and FlanT5 to build an AI customer-support chatbot for intent classification and response generation.",
       "Synthetically expanded the training corpus to lift intent coverage against sparse support logs.",
     ],
+    stack: ["Python", "Transformers", "DistilBERT", "FlanT5"],
   },
 ];
 
@@ -85,39 +79,51 @@ export type WorkItem = {
   internal?: boolean;
   /** Key into the build-time GitHub stats map. */
   repo?: string;
+  /** Short, honest context shown on project cards. */
+  meta?: string;
+  /** Tools and concepts involved, shown as chips. */
+  stack?: string[];
 };
 
 export const projects: WorkItem[] = [
   {
     name: "Lookvisa",
-    tag: "platform",
+    tag: "commercial",
     tone: "live",
-    sub: "lookvisa.com · backend developer (Nov 2024–Feb 2025): designed core API architecture and data models",
+    sub: "A visa platform: designed the core API architecture and data models as backend developer.",
     href: "https://lookvisa.com",
+    meta: "Backend · Nov 2024 — Feb 2025",
+    stack: ["Backend", "API design", "Data models"],
   },
   {
     name: "Invoicing portal",
     tag: "product",
     tone: "live",
-    sub: "invoice.inspirit360.eu · founding engineer for European SMEs: built end to end from empty repo to deployed service",
+    sub: "An invoicing platform for European SMEs: built end to end from an empty repo to a deployed service.",
     href: "https://invoice.inspirit360.eu",
+    meta: "Founding engineer · 2026 — present",
+    stack: ["Next.js", "FastAPI", "PostgreSQL", "Docker"],
   },
   {
     name: "Exam Proctoring Platform",
-    tag: "app",
+    tag: "case study",
     tone: "",
-    sub: "case study · for schools running online exams: browser-based proctoring with nothing to install and no video leaving the device",
+    sub: "For schools running online exams: browser-based proctoring with nothing to install and no video leaving the device.",
     href: "/projects/exam-proctor",
     internal: true,
+    meta: "Final-year project · piloted",
+    stack: ["LTI 1.3", "TypeScript", "React", "Express", "MongoDB"],
   },
   {
     name: "watcher",
-    tag: "daemon",
+    tag: "case study",
     tone: "",
-    sub: "case study · for developers running services: tails logs and explains crashes with a local LLM, no cloud calls (demoed AI Tinkerers Lahore Oct 2026)",
+    sub: "For developers running services: tails logs and explains crashes with a local LLM, with no cloud calls.",
     href: "/projects/watcher",
     internal: true,
     repo: "watcher",
+    meta: "Demoed at AI Tinkerers Lahore · Oct 2026",
+    stack: ["Go", "Ollama", "SQLite", "systemd"],
   },
 ];
 
@@ -126,14 +132,14 @@ export const opensource: WorkItem[] = [
     name: "CI/CD & Kubernetes Pipeline",
     tag: "pipeline",
     tone: "",
-    sub: "shaheeranser/github-actions-demo · builds/pushes to Azure Container Registry and deploys to AKS with per-PR staging",
+    sub: "shaheeranser/github-actions-demo · builds and pushes to Azure Container Registry, then deploys to AKS with per-PR staging.",
     href: "https://github.com/shaheeranser/github-actions-demo",
   },
   {
     name: "reamify",
     tag: "library",
     tone: "",
-    sub: "shaheeranser/reamify · for large PDF tables: streams them into XLSX with bounded memory",
+    sub: "shaheeranser/reamify · streams large PDF tables into XLSX with bounded memory.",
     href: "https://github.com/shaheeranser/reamify",
     repo: "reamify",
   },
@@ -141,7 +147,7 @@ export const opensource: WorkItem[] = [
     name: "hijri-api",
     tag: "data",
     tone: "",
-    sub: "case study · for apps that need trustworthy Hijri dates in Pakistan: verified, auditable month starts as static JSON",
+    sub: "pakistan-hijri/hijri-api · verified, auditable Hijri month starts for Pakistan, served as static JSON.",
     href: "/projects/hijri-api",
     internal: true,
     repo: "hijri-api",
@@ -163,71 +169,51 @@ export const opensource: WorkItem[] = [
   },
 ];
 
-export type Skill = {
+export type SkillGroup = {
   label: string;
-  color: string;
-  logo: string;
-  logoColor?: string;
+  note: string;
+  items: string[];
 };
 
-export const skills: Array<{ label: string; items: Skill[] }> = [
+export const skills: SkillGroup[] = [
   {
     label: "Languages",
-    items: [
-      { label: "TypeScript", color: "3178C6", logo: "typescript", logoColor: "white" },
-      { label: "JavaScript", color: "F7DF1E", logo: "javascript", logoColor: "000000" },
-      { label: "Python", color: "3776AB", logo: "python", logoColor: "white" },
-      { label: "Go", color: "00ADD8", logo: "go", logoColor: "white" },
-      { label: "SQL", color: "4479A1", logo: "postgresql", logoColor: "white" },
-    ],
+    note: "what I reach for first",
+    items: ["TypeScript", "JavaScript", "Python", "Go", "SQL"],
   },
   {
     label: "Frontend",
-    items: [
-      { label: "React", color: "61DAFB", logo: "react", logoColor: "20232A" },
-      { label: "Next.js", color: "000000", logo: "nextdotjs", logoColor: "white" },
-      { label: "Vite", color: "646CFF", logo: "vite", logoColor: "white" },
-    ],
+    note: "interfaces that stay out of the way",
+    items: ["React", "Next.js", "Vite", "Tailwind CSS"],
   },
   {
     label: "Backend",
-    items: [
-      { label: "Node.js", color: "339933", logo: "nodedotjs", logoColor: "white" },
-      { label: "Express", color: "000000", logo: "express", logoColor: "white" },
-      { label: "FastAPI", color: "009688", logo: "fastapi", logoColor: "white" },
-    ],
+    note: "APIs, models, and the seams between",
+    items: ["Node.js", "Express", "FastAPI", "REST"],
   },
   {
     label: "Data",
-    items: [
-      { label: "PostgreSQL", color: "4169E1", logo: "postgresql", logoColor: "white" },
-      { label: "MongoDB", color: "47A248", logo: "mongodb", logoColor: "white" },
-      { label: "MySQL", color: "4479A1", logo: "mysql", logoColor: "white" },
-    ],
+    note: "where the state actually lives",
+    items: ["PostgreSQL", "MongoDB", "MySQL", "SQLite"],
   },
   {
     label: "Cloud & DevOps",
+    note: "from commit to running service",
     items: [
-      { label: "AWS", color: "232F3E", logo: "amazonwebservices", logoColor: "white" },
-      { label: "Azure", color: "0078D4", logo: "microsoftazure", logoColor: "white" },
-      { label: "Docker", color: "2496ED", logo: "docker", logoColor: "white" },
-      { label: "Kubernetes", color: "326CE5", logo: "kubernetes", logoColor: "white" },
-      { label: "GitHub Actions", color: "2088FF", logo: "githubactions", logoColor: "white" },
-      { label: "Caddy", color: "1F88C0", logo: "caddy", logoColor: "white" },
-      { label: "MinIO", color: "C72E49", logo: "minio", logoColor: "white" },
-      { label: "Git", color: "F05032", logo: "git", logoColor: "white" },
+      "AWS",
+      "Azure",
+      "Docker",
+      "Kubernetes",
+      "GitHub Actions",
+      "Caddy",
+      "MinIO",
+      "Git",
     ],
   },
   {
     label: "Data & ML",
-    items: [
-      { label: "TensorFlow", color: "FF6F00", logo: "tensorflow", logoColor: "white" },
-      { label: "TensorFlow.js", color: "FF6F00", logo: "tensorflow", logoColor: "white" },
-      { label: "NumPy", color: "013243", logo: "numpy", logoColor: "white" },
-      { label: "Pandas", color: "150458", logo: "pandas", logoColor: "white" },
-      { label: "Scikit-learn", color: "F7931E", logo: "scikitlearn", logoColor: "white" },
-      { label: "Ollama", color: "000000", logo: "ollama", logoColor: "white" },
-    ],
+    note: "models running close to the metal",
+    items: ["TensorFlow", "TensorFlow.js", "NumPy", "Pandas", "Scikit-learn", "Ollama"],
   },
 ];
 
@@ -267,4 +253,5 @@ export const contactLinks = [
     href: profile.linkedin,
     external: true,
   },
+  { label: "Medium", value: "medium.com/@shaheer.anser", href: profile.medium, external: true },
 ];

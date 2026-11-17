@@ -347,10 +347,10 @@ export const caseStudies: Project[] = [
     status: "MIT · static JSON API",
     stack: ["TypeScript", "JSON", "GitHub Actions"],
     links: [
-      { label: "GitHub", href: "https://github.com/shaheeranser/hijri-api", kind: "repo" },
+      { label: "GitHub", href: "https://github.com/pakistan-hijri/hijri-api", kind: "repo" },
       {
         label: "Live API",
-        href: "https://shaheeranser.github.io/hijri-api/",
+        href: "https://pakistan-hijri.github.io/hijri-api/",
         kind: "live",
       },
     ],
@@ -366,7 +366,7 @@ export const caseStudies: Project[] = [
         kind: "code",
         label: "API",
         lines: [
-          "# Base URL: https://shaheeranser.github.io/hijri-api",
+          "# Base URL: https://pakistan-hijri.github.io/hijri-api",
           "GET /hijri/index.json                    # coverage, generation time, available years",
           "GET /hijri/overrides.json                # the confirmed month-start record, with sources",
           "GET /hijri/calendar/<hijriYear>.json     # Gregorian date → Hijri date + confidence",
@@ -412,20 +412,20 @@ export const caseStudies: Project[] = [
         kind: "links",
         heading: "Read the data",
         intro:
-          "The live API stays at shaheeranser.github.io/hijri-api; this page only links to it.",
+          "The live API stays at pakistan-hijri.github.io/hijri-api; this page only links to it.",
         items: [
           {
             label: "Live API",
-            href: "https://shaheeranser.github.io/hijri-api/",
+            href: "https://pakistan-hijri.github.io/hijri-api/",
             tag: "json",
           },
           {
             label: "Repository",
-            href: "https://github.com/shaheeranser/hijri-api",
+            href: "https://github.com/pakistan-hijri/hijri-api",
           },
           {
             label: "Contributing — add a city or a confirmed month",
-            href: "https://github.com/shaheeranser/hijri-api/blob/main/CONTRIBUTING.md",
+            href: "https://github.com/pakistan-hijri/hijri-api/blob/main/CONTRIBUTING.md",
           },
         ],
       },

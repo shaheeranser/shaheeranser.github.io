@@ -3,7 +3,7 @@ import type { RepoStats } from "@/lib/content";
 
 const REPOS = {
   watcher: "shaheeranser/watcher",
-  "hijri-api": "shaheeranser/hijri-api",
+  "hijri-api": "pakistan-hijri/hijri-api",
   genoffice: "genspark-ai/genoffice",
   reamify: "shaheeranser/reamify",
 } as const;
@@ -13,7 +13,7 @@ export type RepoKey = keyof typeof REPOS;
 const FALLBACK: Record<RepoKey, RepoStats> = {
   watcher: { stars: 7, forks: 2 },
   "hijri-api": { stars: 13, forks: 2 },
-  genoffice: { stars: 11635, forks: 1601 },
+  genoffice: { stars: 12500, forks: 1700 },
   reamify: { stars: 2, forks: 0 },
 };
 

@@ -205,3 +205,38 @@ export function Linkedin(p: IconProps) {
     </svg>
   );
 }
+
+export function Check(p: IconProps) {
+  return (
+    <svg className="icon" viewBox="0 0 24 24" {...stroke} {...p}>
+      <path d="m5 12.5 4.5 4.5L19 7" />
+    </svg>
+  );
+}
+
+export function Copy(p: IconProps) {
+  return (
+    <svg className="icon" viewBox="0 0 24 24" {...stroke} {...p}>
+      <rect x="9" y="9" width="11" height="11" rx="2" />
+      <path d="M15 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h3" />
+    </svg>
+  );
+}
+
+export function MapPin(p: IconProps) {
+  return (
+    <svg className="icon" viewBox="0 0 24 24" {...stroke} {...p}>
+      <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" />
+      <circle cx="12" cy="10" r="2.5" />
+    </svg>
+  );
+}
+
+export function Clock(p: IconProps) {
+  return (
+    <svg className="icon" viewBox="0 0 24 24" {...stroke} {...p}>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7.5V12l3 2" />
+    </svg>
+  );
+}

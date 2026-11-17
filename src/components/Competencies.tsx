@@ -1,29 +1,40 @@
-/* eslint-disable @next/next/no-img-element -- shields.io SVG badges are pre-rendered images */
-import { skills, type Skill } from "@/lib/content";
-
-function badgeSrc(skill: Skill) {
-  const label = skill.label.replace(/ /g, "_");
-  const logoColor = skill.logoColor ?? "white";
-  return `https://img.shields.io/badge/${label}-${skill.color}?style=flat-square&logo=${skill.logo}&logoColor=${logoColor}`;
-}
+import { SectionHeader } from "@/components/SectionHeader";
+import { skills } from "@/lib/content";
 
 export function Competencies() {
   return (
-    <section className="sect" id="competencies">
-      <div className="sect-bar">
-        <h2>Competencies</h2>
-      </div>
+    <section className="sect" id="stack">
+      <SectionHeader
+        index="03"
+        eyebrow="stack"
+        title="The tools I"
+        accent="reach for."
+        aside={
+          <p className="section-note">
+            Grouped by where they show up in the work — not by buzzword.
+          </p>
+        }
+      />
 
-      <div className="badges">
-        {skills.map((group) => (
-          <div className="badge-row" key={group.label}>
-            <span className="lbl">{group.label}</span>
-            <span className="set">
+      <div className="skill-grid">
+        {skills.map((group, index) => (
+          <article className="skill-card" key={group.label}>
+            <div className="skill-head">
+              <span className="skill-index" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3>{group.label}</h3>
+                <p>{group.note}</p>
+              </div>
+            </div>
+
+            <ul className="chips">
               {group.items.map((item) => (
-                <img key={item.label} src={badgeSrc(item)} alt={item.label} loading="lazy" />
+                <li key={item}>{item}</li>
               ))}
-            </span>
-          </div>
+            </ul>
+          </article>
         ))}
       </div>
     </section>

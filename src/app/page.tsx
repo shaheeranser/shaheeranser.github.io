@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <SiteShell>
-      <Hero />
+      <Hero stats={stats} />
       <Work stats={stats} />
       <Experience />
       <Competencies />

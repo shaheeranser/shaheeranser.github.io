@@ -7,6 +7,28 @@ export const metadata: Metadata = {
   description:
     "Case studies by Muhammad Shaheer: exam-proctor, watcher, and hijri-api — browser-based exam proctoring, a self-hosted log-watching daemon, and verifiable Hijri calendar data as static JSON. Projects include Inspirit360 invoicing, Lookvisa, and open-source libraries like reamify.",
   alternates: { canonical: "/projects/" },
+  openGraph: {
+    type: "website",
+    url: "/projects/",
+    title: "Projects · Muhammad Shaheer",
+    description:
+      "Case studies by Muhammad Shaheer: exam-proctor, watcher, and hijri-api — browser-based exam proctoring, a self-hosted log-watching daemon, and verifiable Hijri calendar data as static JSON.",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Muhammad Shaheer — Full-Stack Software Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Projects · Muhammad Shaheer",
+    description:
+      "Case studies by Muhammad Shaheer: exam-proctor, watcher, and hijri-api — browser-based exam proctoring, a self-hosted log-watching daemon, and verifiable Hijri calendar data as static JSON.",
+    images: ["/og.png"],
+  },
 };
 
 export default function ProjectsIndex() {

@@ -1,42 +1,50 @@
-# portfolio
+# shaheeranser.me
 
-Personal portfolio site for Muhammad Shaheer — a full-stack software engineer. Built with Next.js (App Router) and Tailwind CSS, it presents experience, selected projects, and skills.
+Personal portfolio for **Muhammad Shaheer**, a full-stack software engineer. Built with Next.js
+(App Router), TypeScript, and hand-written CSS, and exported as static files for GitHub Pages.
 
-## Views
+Live at **[shaheeranser.me](https://shaheeranser.me)** · [hello@shaheeranser.me](mailto:hello@shaheeranser.me)
 
-The site is a single-window desktop app. One centered window sits between the top panel and the
-dock, and the dock switches which view renders inside it — the page itself never scrolls.
+## What is on the site
 
-- **Home** — a single fastfetch terminal: `</>` ASCII art, your name, live detail rows, and terminal-styled *view projects* / *get in touch* / *download résumé* buttons
-- **Experience** — roles
-- **Work** — sub-tabs: **Projects** (commercial and shipped systems) and **Open source** (a library, a dataset and merged/open pull requests)
-- **Competencies** — sub-tabs: **Stack** (skills as shields.io badges) and **Education** (study and certifications)
-- **Contact** — email, phone, LinkedIn, GitHub, résumé
+- **Hero** — an editorial introduction with a profile terminal, availability, and a highlights strip.
+- **Selected work** — commercial products, case studies, and open-source contributions.
+- **Experience** — roles, education, and certifications.
+- **Stack** — tools grouped by where they show up in the work.
+- **Contact** — email, phone, GitHub, LinkedIn, Medium, and the résumé.
+- **Case studies** — `/projects/exam-proctor`, `/projects/watcher`, `/projects/hijri-api`, and an index at `/projects`.
 
 ## Stack
 
 - Next.js 16 (App Router, React 19, Turbopack)
 - TypeScript
-- Tailwind CSS v4
-- `next/font` (IBM Plex Sans, IBM Plex Mono)
+- Tailwind CSS v4 (Preflight only; the visual system is in `src/app/globals.css`)
+- `next/font` — Space Grotesk, Inter, JetBrains Mono, Instrument Serif
 
 ## Design
 
-A quiet desktop theme built on the Catppuccin palettes (Mocha by default, Latte for the light
-theme), with a single flat accent and no gradients. A top panel (brand, clock, theme toggle,
-`⌘K` launcher) and a dock — a floating pill on desktop, a bottom tab bar on mobile — switch views
-inside one uniform, centered window whose body scrolls internally when a view runs long. Dark/light
-theme persists via `localStorage`.
+A quiet, editorial take on a developer console: one signal-green accent, big display type, a serif
+accent for emphasis, mono labels for metadata, and a dark theme by default with a warm light theme.
+The site stays deliberately content-first — every section is meant to be scanned in under a minute.
+
+Dark/light preference is persisted in `localStorage` and respects `prefers-color-scheme` on a first
+visit. Section navigation highlights the active section with an `IntersectionObserver`.
 
 ## Deployment
 
-Statically exported and published to GitHub Pages from this repository by GitHub's standard
-Next.js Pages workflow (`.github/workflows/nextjs.yml`) on every push to `main`, served from the
-site root at `https://shaheeranser.github.io/`. `metadataBase` points at the same URL.
+The site is statically exported (`output: "export"`) and published from this repository to GitHub
+Pages by `.github/workflows/nextjs.yml` on every push to `main`. The workflow also runs daily so
+build-time data stays current.
 
-`next.config.ts` uses an empty base path (the repo is the `shaheeranser.github.io` user site);
-`nextjs.yml` is GitHub's stock Next.js workflow, which injects the Pages base path automatically
-for project sites and leaves it empty here.
+`public/CNAME` pins the custom domain to `shaheeranser.me`. `next.config.ts` keeps an empty base
+path because the site is served from the domain root (the repository is the user site), and
+`metadataBase`, the sitemap, robots, and the Open Graph metadata all point at the custom domain.
+
+### Dynamic data on a static host
+
+There is no server at runtime. GitHub star/fork counts are fetched at build time
+(`src/lib/github.ts`) with a last-known fallback, then baked into the export. The daily Pages
+rebuild refreshes them. The page itself makes no runtime API calls.
 
 ## Getting started
 
@@ -53,17 +61,25 @@ Open http://localhost:3000.
 npm run build
 ```
 
-The static export is written to `out/` (there is no `next start` — this project is
-server-less). To preview the Pages build locally:
+The static export is written to `out/`. Preview it locally with:
 
 ```bash
-npm run build
 npx serve out
 ```
 
+## Content
+
+Site content lives in two files:
+
+- `src/lib/content.ts` — profile, roles, projects, open-source entries, skills, education, and contact links.
+- `src/lib/caseStudies.ts` — long-form case studies rendered at `/projects/[slug]`.
+
+Adding a case study is one object in `caseStudies`; adding a project card is one object in
+`projects`. The route and metadata are generated from the same data.
+
 ## Notes
 
-- Site content (profile, roles, projects, contributions, skills) is curated in `src/lib/content.ts`.
-- GitHub star/fork counts are fetched at build time with a last-known fallback, then baked into
-  the static export. The Pages workflow rebuilds daily so they stay current; the page itself still
-  has no runtime data fetch.
+- `public/resume.pdf` is the downloadable résumé.
+- `public/og.png` is the Open Graph card (1200×630).
+- `src/app/icon.svg` is the favicon.
+- `public/watcher/index.html` is a legacy redirect into `/projects/watcher/`.
